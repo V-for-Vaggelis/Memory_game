@@ -104,7 +104,9 @@ h1 {
     display: inline-block;
 }
 
-.score-panel .restart {
+.restart {
+    min-height: 48px;
+    min-width: 48px;
     float: right;
     cursor: pointer;
 }
