@@ -39,12 +39,12 @@ h1 {
  */
 
 .deck {
-    width: 660px;
-    min-height: 680px;
+    width: 94%;
+    height: 105vw;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-    padding: 32px;
+    padding: 5%;
     border-radius: 10px;
-    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    box-shadow: 8px 12px 18px 0 rgba(46, 61, 73, 0.5);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -53,8 +53,9 @@ h1 {
 }
 
 .deck .card {
-    height: 125px;
-    width: 125px;
+    height: 21%;
+    width: 21%;
+    margin: 2%;
     background: #2e3d49;
     font-size: 0;
     color: #ffffff;
@@ -63,7 +64,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    box-shadow: 2.5px 1px 10px 0 rgba(46, 61, 73, 0.5);
 }
 
 .deck .card.open {
@@ -73,13 +74,13 @@ h1 {
 }
 
 .deck .card.show {
-    font-size: 33px;
+    font-size: 20px;
 }
 
 .deck .card.match {
     cursor: default;
     background: #02ccba;
-    font-size: 33px;
+    font-size: 20px;
 }
 
 /*
@@ -110,3 +111,24 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/*@media screen and (min-width:700px) {
+  .deck {
+      width: 660px;
+      height: auto;
+      min-height: 680px;
+      padding: 32px;
+      box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+  }
+  .deck .card {
+    height: 125px;
+    width: 125px;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+  }
+  .deck .card.show {
+      font-size: 33px;
+  }
+   .deck .card.match {
+     font-size: 33px;
+   }
+}*/
