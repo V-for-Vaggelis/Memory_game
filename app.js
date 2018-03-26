@@ -14,13 +14,17 @@ function myCode() {
    *   - loop through each card and create its HTML
    *   - add each card's HTML to the page
    */
-   shuffle(cardsArray);
-   deck.children().remove();
-   for (const card of cardsArray) {
-     deck.append(card);
+   function restartGame() {
+     shuffle(cardsArray);
+     deck.children().remove();
+     for (let card of cardsArray) {
+       card.classList.remove("open");
+       card.classList.remove("show");
+       deck.append(card);
+     }
    }
 
-
+   restartGame();
   // Shuffle function from http://stackoverflow.com/a/2450976
   function shuffle(array) {
       var currentIndex = array.length, temporaryValue, randomIndex;
@@ -36,6 +40,11 @@ function myCode() {
       return array;
   }
 
+
+  const restart = $('.restart');
+  restart.click(function() {
+    restartGame();
+  });
 
   /*
    * set up the event listener for a card. If a card is clicked:
