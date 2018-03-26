@@ -70,7 +70,8 @@ h1 {
 
 .deck .card.open {
   /* This class will create an effect of the card being flipped */
-    transform: rotateY(0);
+    transform: rotateY(180deg);
+    transition-duration: 0.8s;
     background: #02b3e4;
     cursor: default;
 }

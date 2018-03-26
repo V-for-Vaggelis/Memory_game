@@ -38,5 +38,13 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+ function cardShow(card) {
+   card.addClass("open show");
+ }
+const deck = $('.deck');
+ deck.on("click", ".card", function(evt) {
+   let target = $(evt.target);
+   cardShow(target);
+ });
 }
 $(myCode());
