@@ -17,9 +17,12 @@ function myCode() {
    function restartGame() {
      shuffle(cardsArray);
      deck.children().remove();
+     let i = 0;
      for (let card of cardsArray) {
+       i += 1;
        card.classList.remove("open");
        card.classList.remove("show");
+       card.setAttribute("id", "card" + i);
        deck.append(card);
      }
    }
@@ -57,27 +60,34 @@ function myCode() {
    *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
    */
    function cardShow(clickedCard) {
-     clickedCard.addClass("open show");
+     clickedCard.toggleClass("open show");
    }
-   function cardHide(card) {
-     card.removeClass("open show");
+   function cardHide(card1, card2) {
+     card1.classList.remove("open");
+     card1.classList.remove("show");
+     card2.classList.remove("open");
+     card2.classList.remove("show");
    }
+   function delay(card1, card2) {
+    setTimeout( function(){ cardHide(card1, card2); }, 1000);
+  }
    let openCards = [];
-   function addOpened(clickedCard) {
+   function addOpened(CardId) {
+     let clickedCard = document.getElementById(CardId);
      openCards.push(clickedCard);
    }
   let matches = 0;
   deck.on("click", ".card", function(evt) {
    let target = $(evt.target);
+   let targetId = target.attr("id");
    cardShow(target);
-   addOpened(target);
+   addOpened(targetId);
    let numberOfOpened = openCards.length;
    if (numberOfOpened === 2) {
      let firstIcon = openCards[0].innerHTML;
      let secondIcon = openCards[1].innerHTML;
      if (firstIcon !== secondIcon) {
-       cardHide(openCards[0]);
-       cardHide(openCards[1]);
+       delay(openCards[0], openCards[1]);
      }
      else {
        matches += 1;
