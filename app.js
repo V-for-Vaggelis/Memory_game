@@ -60,7 +60,7 @@ function myCode() {
    *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
    */
    function cardShow(clickedCard) {
-     clickedCard.toggleClass("open show");
+     clickedCard.addClass("open show");
    }
    function cardHide(card1, card2) {
      card1.classList.remove("open");
