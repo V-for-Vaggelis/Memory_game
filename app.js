@@ -9,6 +9,7 @@ function myCode() {
    let moves = 0;
    let failedMoves =0;
    let stars = $("#stars");
+   let starCount = 3;
    let matches = 0;
 
   /*
@@ -23,6 +24,7 @@ function myCode() {
      moves = 0;
      failedMoves =0;
      matches = 0;
+     starCount = 3;
      stars.children().remove();
      stars.append("<li><i class=\"fa fa-star\"></i></li>\n<li><i class=\"fa fa-star\"></i></li>\n<li><i class=\"fa fa-star\"></i></li>");
      shuffle(cardsArray);
@@ -117,6 +119,7 @@ function myCode() {
      if (firstIcon !== secondIcon) {
        delay(openCards[0], openCards[1]);
        failedMoves += 1;
+       rating(failedMoves);
      }
      else {
        matches += 1;
@@ -124,7 +127,6 @@ function myCode() {
        checkWin();
      }
      openCards = [];
-     rating(failedMoves);
    }
  });
 
@@ -136,12 +138,24 @@ function countMove(numOfMoves) {
  function rating(numOfMistakes) {
    if ((numOfMistakes === 5)||(numOfMistakes === 8)) {
      stars.children().last().remove();
+     starCount -= 1;
    }
  }
 
  function checkWin() {
    if (matches === 8) {
      deck.children().remove();
+     const message = "<h1>Congratulations!!!</h1>"
+     let stars, starsCode;
+     for (let i=0; i>starCount; i++) {
+       stars += "\n<li><i class=\"fa fa-star\"></i></li>";
+     }
+     starsCode = "<ul>" + stars + "\n</ul>";
+     let rating = "<h3>Your rating: " + starsCode + "</h3>";
+     let button = "<button type=\"button\">Play again!</button>";
+     deck.append(message);
+     deck.append(starsCode);
+     deck.append(button);
      // deck.innerHTML = "<h1> Congratulations!!!</h1>";
    }
 }
