@@ -9,6 +9,7 @@ function myCode() {
    let moves = 0;
    let failedMoves =0;
    let stars = $("#stars");
+   let matches = 0;
 
   /*
    * Display the cards on the page
@@ -21,6 +22,7 @@ function myCode() {
      MoveShow.textContent = "0 Moves";
      moves = 0;
      failedMoves =0;
+     matches = 0;
      stars.children().remove();
      stars.append("<li><i class=\"fa fa-star\"></i></li>\n<li><i class=\"fa fa-star\"></i></li>\n<li><i class=\"fa fa-star\"></i></li>");
      shuffle(cardsArray);
@@ -91,16 +93,16 @@ function myCode() {
 
   let matchedCards = [];
 
-  function addMatched(card1, card2) {
+  /*function addMatched(card1, card2) {
     let firstCardId = card1.attr("id");
     let firstCardDOM = document.getElementById(firstCardId);
     matchedCards.push(firstCardDOM);
     let SecondCardId = card2.attr("id");
     let SecondCardDOM = document.getElementById(SecondCardId);
     matchedCards.push(SecondCardDOM);
-  }
+  }*/
 
-  let matches = 0;
+
   deck.on("click", ".card", function(evt) {
    let target = $(evt.target);
    let targetId = target.attr("id");
@@ -116,10 +118,11 @@ function myCode() {
        delay(openCards[0], openCards[1]);
        failedMoves += 1;
      }
-     /*else if (firstIcon === secondIcon) {
-       addMatched(openCards[0], openCards[1]);
+     else {
+       matches += 1;
+       // addMatched(openCards[0], openCards[1]);
        checkWin();
-     }*/
+     }
      openCards = [];
      rating(failedMoves);
    }
@@ -136,8 +139,12 @@ function countMove(numOfMoves) {
    }
  }
 
- /*function checkWin() {
-     deck.innerHTML = "<h1> Congratulations!!!</h1>";
-}*/
+ function checkWin() {
+   if (matches === 8) {
+     deck.children().remove();
+     // deck.innerHTML = "<h1> Congratulations!!!</h1>";
+   }
+}
+
 }
 $(myCode());
