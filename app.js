@@ -76,24 +76,41 @@ function myCode() {
      let clickedCard = document.getElementById(CardId);
      openCards.push(clickedCard);
    }
+  let matchedCards = [];
+  /*function addMatched(card1, card2) {
+    card1.addClass("matched");
+    card2.addClass("matched");
+  }*/
+  let moves = 0;
   let matches = 0;
   deck.on("click", ".card", function(evt) {
    let target = $(evt.target);
    let targetId = target.attr("id");
    cardShow(target);
    addOpened(targetId);
-   let numberOfOpened = openCards.length;
-   if (numberOfOpened === 2) {
+    let numOfOpen = openCards.length;
+    if (numOfOpen === 2) {
+      moves += 1;
+      countMove(moves);
      let firstIcon = openCards[0].innerHTML;
      let secondIcon = openCards[1].innerHTML;
      if (firstIcon !== secondIcon) {
        delay(openCards[0], openCards[1]);
      }
-     else {
-       matches += 1;
-     }
      openCards = [];
    }
  });
+
+function countMove(numOfMoves) {
+  let MoveShow = document.getElementById("moves");
+  MoveShow.textContent = numOfMoves + " Moves";
+}
+
+ /*function rating(numOfMoves) {
+   let stars =
+   if (numOfMoves > 2) {
+
+   }
+ }*/
 }
 $(myCode());
