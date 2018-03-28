@@ -6,7 +6,7 @@ function myCode() {
    const deck = $('.deck');
    let cards = document.getElementsByClassName("card");
    let cardsArray = [...cards];
-
+   let moves = 0;
 
   /*
    * Display the cards on the page
@@ -15,6 +15,9 @@ function myCode() {
    *   - add each card's HTML to the page
    */
    function restartGame() {
+     let MoveShow = document.getElementById("moves");
+     MoveShow.textContent = "0 Moves";
+     moves = 0;
      shuffle(cardsArray);
      deck.children().remove();
      let i = 0;
@@ -62,26 +65,34 @@ function myCode() {
    function cardShow(clickedCard) {
      clickedCard.addClass("open show");
    }
+
    function cardHide(card1, card2) {
      card1.classList.remove("open");
      card1.classList.remove("show");
      card2.classList.remove("open");
      card2.classList.remove("show");
    }
+
    function delay(card1, card2) {
     setTimeout( function(){ cardHide(card1, card2); }, 1000);
   }
+
    let openCards = [];
    function addOpened(CardId) {
      let clickedCard = document.getElementById(CardId);
      openCards.push(clickedCard);
    }
+
   let matchedCards = [];
-  /*function addMatched(card1, card2) {
-    card1.addClass("matched");
-    card2.addClass("matched");
-  }*/
-  let moves = 0;
+  function addMatched(card1, card2) {
+    let firstCardId = card1.attr("id");
+    let firstCardDOM = document.getElementById(firstCardId);
+    matchedCards.push(firstCardDOM);
+    let SecondCardId = card2.attr("id");
+    let SecondCardDOM = document.getElementById(SecondCardId);
+    matchedCards.push(SecondCardDOM);
+  }
+
   let matches = 0;
   deck.on("click", ".card", function(evt) {
    let target = $(evt.target);
@@ -97,6 +108,10 @@ function myCode() {
      if (firstIcon !== secondIcon) {
        delay(openCards[0], openCards[1]);
      }
+     /*else if (firstIcon === secondIcon) {
+       addMatched(openCards[0], openCards[1]);
+       checkWin();
+     }*/
      openCards = [];
    }
  });
@@ -112,5 +127,12 @@ function countMove(numOfMoves) {
 
    }
  }*/
+ function checkWin() {
+   let foundCards = MatchedCards.length;
+   if (foundCards === 16) {
+     deck.children().remove();
+     deck.innerHTML = "<h1> Congratulations!!!</h1>";
+   }
+ }
 }
 $(myCode());
