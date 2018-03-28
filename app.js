@@ -7,6 +7,8 @@ function myCode() {
    let cards = document.getElementsByClassName("card");
    let cardsArray = [...cards];
    let moves = 0;
+   let failedMoves =0;
+   let stars = $("#stars");
 
   /*
    * Display the cards on the page
@@ -18,6 +20,9 @@ function myCode() {
      let MoveShow = document.getElementById("moves");
      MoveShow.textContent = "0 Moves";
      moves = 0;
+     failedMoves =0;
+     stars.children().remove();
+     stars.append("<li><i class=\"fa fa-star\"></i></li>\n<li><i class=\"fa fa-star\"></i></li>\n<li><i class=\"fa fa-star\"></i></li>");
      shuffle(cardsArray);
      deck.children().remove();
      let i = 0;
@@ -78,12 +83,14 @@ function myCode() {
   }
 
    let openCards = [];
+
    function addOpened(CardId) {
      let clickedCard = document.getElementById(CardId);
      openCards.push(clickedCard);
    }
 
   let matchedCards = [];
+
   function addMatched(card1, card2) {
     let firstCardId = card1.attr("id");
     let firstCardDOM = document.getElementById(firstCardId);
@@ -107,12 +114,14 @@ function myCode() {
      let secondIcon = openCards[1].innerHTML;
      if (firstIcon !== secondIcon) {
        delay(openCards[0], openCards[1]);
+       failedMoves += 1;
      }
      /*else if (firstIcon === secondIcon) {
        addMatched(openCards[0], openCards[1]);
        checkWin();
      }*/
      openCards = [];
+     rating(failedMoves);
    }
  });
 
@@ -121,18 +130,14 @@ function countMove(numOfMoves) {
   MoveShow.textContent = numOfMoves + " Moves";
 }
 
- /*function rating(numOfMoves) {
-   let stars =
-   if (numOfMoves > 2) {
-
-   }
- }*/
- function checkWin() {
-   let foundCards = MatchedCards.length;
-   if (foundCards === 16) {
-     deck.children().remove();
-     deck.innerHTML = "<h1> Congratulations!!!</h1>";
+ function rating(numOfMistakes) {
+   if ((numOfMistakes === 5)||(numOfMistakes === 8)) {
+     stars.children().last().remove();
    }
  }
+
+ /*function checkWin() {
+     deck.innerHTML = "<h1> Congratulations!!!</h1>";
+}*/
 }
 $(myCode());
