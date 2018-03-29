@@ -169,7 +169,7 @@ function myCode() {
        matches += 1;
        // addMatched(openCards[0], openCards[1]);
        if (matches === 8) {
-         Won();
+         won();
        }
      }
      openCards = [];
@@ -188,7 +188,7 @@ function countMove(numOfMoves) {
    }
  }
 
- function Won() {
+ function won() {
    stopTimer();
    /*deck.children().remove();
    const message = "<h1>Congratulations!!!</h1>"
