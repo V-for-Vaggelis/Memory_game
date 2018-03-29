@@ -22,6 +22,12 @@ function myCode() {
    function stopTimer() {
      status = 0;
    }
+
+   function restartTimer() {
+     status = 1;
+     time = 0;
+   }
+
    // Stopwatch from: https://www.youtube.com/watch?v=gpFPppFU8s8
    function timer() {
      if (status === 1) {
@@ -39,7 +45,7 @@ function myCode() {
          if (sec < 10) {
            sec = "0" + sec;
          }
-         document.getElementById("timerLabel").innerHTML = min + ":" + sec + ":" + msec;
+         document.getElementById("timerLabel").textContent = min + ":" + sec + ":" + msec;
          timer();
        }, 10);
      }
@@ -74,6 +80,7 @@ function myCode() {
        card.setAttribute("id", "card" + i);
        deck.append(card);
      }
+     restartTimer();
    }
 
    restartGame();
