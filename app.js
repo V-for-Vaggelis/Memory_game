@@ -152,7 +152,9 @@ function myCode() {
     matchedCards.push(SecondCardDOM);
   }*/
 
-
+/*deck.click(function() {
+  Won();
+});*/
   deck.on("click", ".card", function(evt) {
    let target = $(evt.target);
    let targetId = target.attr("id");
@@ -199,7 +201,7 @@ function countMove(numOfMoves) {
    ratingModal.innerHTML = rating;
    let time = document.getElementById("timerLabel").textContent;
    let timeModal = document.getElementById("time-modal");
-   timeModal.textContent = "Your time: " + time;
+   timeModal.textContent = "Time:   " + time;
    // I can break it to min sec and ms later
    modal.style.display = "block";
 

@@ -18,8 +18,10 @@ body {
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    background: url('nightsky.png') no-repeat center center fixed;
+    background-size: cover;
     font-family: 'Coda', cursive;
+    color: white;
 }
 
 /* The Modal (background) */
@@ -42,8 +44,10 @@ body {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    border: 3px solid #888;
+    border-radius: 10px;
+    width: 50%; /* Could be more or less, depending on screen size */
+    color: black;
 }
 
 /* The Close Button */
@@ -59,6 +63,12 @@ body {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.modal-content #replay {
+  background-color: silver;
+  height: 25%;
+  width: 35%;
 }
 
 .container {
@@ -151,12 +161,27 @@ h1 {
 }
 
 .restart {
-    min-height: 48px;
-    min-width: 48px;
+    color: black;
+    background-color: silver;
+    border: 1px solid black;
+    border-radius: 5px;
+    min-height: 24px;
+    min-width: 24px;
     float: right;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
+    padding: 5px 5px 2px 5px;
     cursor: pointer;
+}
+
+.restart:hover {
+background-color: rgb(199, 201, 236);
+}
+
+.fa-repeat {
+  font-size: 1.3em;
+}
+
+.fa-star {
+  color: gold;
 }
 
 @media screen and (min-width:600px) {
@@ -170,13 +195,13 @@ h1 {
      font-size: 30px;
    }
    h1 {
-     font-size: 4.5em;
+     font-size: 2.2em;
    }
-   span, .fa-repeat {
-     font-size: 2.5em;
+   #moves {
+     font-size: 1.3em;
    }
    .fa-star {
-     font-size: 1.5em;
+     font-size: 1.3em;
    }
 }
 
@@ -186,9 +211,6 @@ h1 {
       box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
     }
   h1 {
-    font-size: 6em;
-  }
-  span, .fa-repeat {
     font-size: 2.8em;
   }
   .deck .card.show {
@@ -196,5 +218,11 @@ h1 {
   }
    .deck .card.match {
      font-size: 35px;
+   }
+   .modal-content #replay {
+     width: 20%;
+   }
+   .modal-content {
+     width: 40%;
    }
 }

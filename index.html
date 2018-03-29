@@ -17,24 +17,24 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <h2>You won!!!</h2>
-    <h3>Your rating: <ul id="stars-modal"></ul></h3>
+    <h3>Rating: <ul id="stars-modal"></ul></h3>
     <h3 id="time-modal"></h3>
-    <button id="replay">Play again</button>
+    <button id="replay" type="button" value="Play again">Play again</button>
   </div>
 
 </div>
 
     <div class="container">
-        <header>
+        <!-- <header> -->
             <h1>Matching Game</h1>
-        </header>
+        <!-- </header> -->
+        <!-- <div id="timer_container"> -->
 
-        <div id="timer_container">
-          <h3 id="timerLabel">00:00:00</h3>
-        </div>
+        <!-- </div> -->
 
         <section class="score-panel">
-        	<ul id="stars">
+
+          <ul id="stars">
         		<li><i class="fa fa-star"></i></li>
         		<li><i class="fa fa-star"></i></li>
         		<li><i class="fa fa-star"></i></li>
@@ -42,11 +42,12 @@
 
         	<span id="moves">0 Moves</span>
 
-            <div class="restart">
+
+          <div class="restart">
         		<i class="fa fa-repeat"></i>
         	</div>
         </section>
-
+        <h3 id="timerLabel">00:00:00</h3>
         <ul class="deck">
             <li class="card">
                 <i class="fa fa-diamond"></i>
