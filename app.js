@@ -11,6 +11,43 @@ function myCode() {
    let stars = $("#stars");
    let starCount = 3;
    let matches = 0;
+   let status = 0;
+   let time = 0;
+
+   function startTimer() {
+     status = 1;
+     timer();
+   }
+
+   function stopTimer() {
+     status = 0;
+   }
+   // Stopwatch from: https://www.youtube.com/watch?v=gpFPppFU8s8
+   function timer() {
+     if (status === 1) {
+       setTimeout(function() {
+         time++;
+         var min = Math.floor(time/100/60);
+         var sec = Math.floor(time/100);
+         var msec = time % 100;
+         if (min < 10) {
+           min = "0" + min;
+         }
+         if (sec >= 60) {
+           sec = sec % 60;
+         }
+         if (sec < 10) {
+           sec = "0" + sec;
+         }
+         document.getElementById("timerLabel").innerHTML = min + ":" + sec + ":" + msec;
+         timer();
+       }, 10);
+     }
+   }
+
+   document.addEventListener("DOMContentLoaded", function() {
+     startTimer();
+   });
 
   /*
    * Display the cards on the page
@@ -124,7 +161,9 @@ function myCode() {
      else {
        matches += 1;
        // addMatched(openCards[0], openCards[1]);
-       checkWin();
+       if (matches === 8) {
+         Won();
+       }
      }
      openCards = [];
    }
@@ -142,23 +181,25 @@ function countMove(numOfMoves) {
    }
  }
 
- function checkWin() {
-   if (matches === 8) {
-     deck.children().remove();
-     const message = "<h1>Congratulations!!!</h1>"
-     let stars, starsCode;
-     for (let i=0; i>starCount; i++) {
-       stars += "\n<li><i class=\"fa fa-star\"></i></li>";
-     }
-     starsCode = "<ul>" + stars + "\n</ul>";
-     let rating = "<h3>Your rating: " + starsCode + "</h3>";
-     let button = "<button type=\"button\">Play again!</button>";
-     deck.append(message);
-     deck.append(starsCode);
-     deck.append(button);
-     // deck.innerHTML = "<h1> Congratulations!!!</h1>";
+ function Won() {
+   stopTimer();
+   /*deck.children().remove();
+   const message = "<h1>Congratulations!!!</h1>"
+   let stars;
+   let starsCode;
+   for (let i=0; i<starCount; i++) {
+     stars += "<li><i class=\"fa fa-star\"></i></li>\n";
    }
-}
+   starsCode = "<ul>\n" + stars + "</ul>";
+   let rating = "<h3>Your rating: </h3>";
+   let button = "<button type=\"button\">Play again!</button>";
+   deck.append(message);
+   deck.append(rating);
+   deck.append(starsCode);
+   deck.append(button);
+   // deck.innerHTML = "<h1> Congratulations!!!</h1>";
+ }*/
+  }
 
 }
 $(myCode());
