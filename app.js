@@ -84,6 +84,7 @@ function myCode() {
        deck.append(card);
      }
      restartTimer();
+     timer();
    }
 
    restartGame();
@@ -193,7 +194,21 @@ function countMove(numOfMoves) {
 
  function Won() {
    stopTimer();
+   let rating = document.getElementById("stars").innerHTML;
+   let ratingModal = document.getElementById("stars-modal");
+   ratingModal.innerHTML = rating;
+   let time = document.getElementById("timerLabel").textContent;
+   let timeModal = document.getElementById("time-modal");
+   timeModal.textContent = "Your time: " + time;
+   // I can break it to min sec and ms later
    modal.style.display = "block";
+
+   let replay = $("#replay");
+   replay.click(function() {
+     modal.style.display = "none";
+     restartGame();
+   });
+
    // When the user clicks on <span> (x), close the modal
     closeModal.onclick = function() {
         modal.style.display = "none";

@@ -38,6 +38,7 @@ body {
 
 /* Modal Content/Box */
 .modal-content {
+  text-align: center;
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
@@ -135,14 +136,16 @@ h1 {
     margin-bottom: 10px;
 }
 
-.score-panel #stars {
+.score-panel #stars,
+#stars-modal {
     margin: 0;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
 }
 
-.score-panel #stars li {
+.score-panel #stars li,
+#stars-modal li {
     list-style: none;
     display: inline-block;
 }
