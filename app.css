@@ -89,9 +89,9 @@ h1 {
 
 .deck {
     width: 94%;
-    height: 105vmin;
+    height: 80vh;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-    padding: 5%;
+    padding: 2%;
     border-radius: 10px;
     box-shadow: 8px 12px 18px 0 rgba(46, 61, 73, 0.5);
     display: flex;
@@ -104,7 +104,7 @@ h1 {
 .deck .card {
     height: 21%;
     width: 21%;
-    margin: 2%;
+    margin: 1%;
     background: #2e3d49;
     font-size: 0;
     /* This will ensure that the icon doesn't initially display */
@@ -183,8 +183,21 @@ background-color: rgb(199, 201, 236);
 .fa-star {
   color: gold;
 }
-
-@media screen and (min-width:600px) {
+@media screen and (max-width: 400px) {
+  .score-panel {
+    text-align: center;
+    align-items: center;
+  }
+  .restart {
+    position: absolute;
+    margin-left: 15px;
+    display: inline;
+  }
+}
+@media screen and (min-width:500px) {
+  .deck {
+    width: 80%
+  }
   .deck .card {
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
   }
@@ -225,4 +238,16 @@ background-color: rgb(199, 201, 236);
    .modal-content {
      width: 40%;
    }
+}
+
+@media screen and (max-height:500px) {
+  .deck {
+    height: 120vh;
+  }
+}
+
+@media screen and (max-height:350px) {
+  .deck {
+    height: 170vh;
+  }
 }
