@@ -120,37 +120,35 @@ function myCode() {
    *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
    */
    function cardShow(clickedCard) {
-     clickedCard.addClass("open show");
+     clickedCard.classList.add("open");
+     clickedCard.classList.add("show");
    }
 
-   function cardHide(card1, card2) {
-     card1.classList.remove("open");
-     card1.classList.remove("show");
-     card2.classList.remove("open");
-     card2.classList.remove("show");
+   function cardHide(card) {
+     card.classList.remove("open");
+     card.classList.remove("show");
+
    }
 
    function delay(card1, card2) {
-    setTimeout( function(){ cardHide(card1, card2); }, 1000);
+    setTimeout( function() {
+      cardHide(card1);
+      cardHide(card2);
+     }, 1000);
   }
 
    let openCards = [];
 
-   function addOpened(CardId) {
-     let clickedCard = document.getElementById(CardId);
+   function addOpened(clickedCard) {
+     // let clickedCard = document.getElementById(CardId);
      openCards.push(clickedCard);
    }
 
   let matchedCards = [];
 
-  /*function addMatched(card1, card2) {
-    let firstCardId = card1.attr("id");
-    let firstCardDOM = document.getElementById(firstCardId);
-    matchedCards.push(firstCardDOM);
-    let SecondCardId = card2.attr("id");
-    let SecondCardDOM = document.getElementById(SecondCardId);
-    matchedCards.push(SecondCardDOM);
-  }*/
+  function addMatched(card) {
+      matchedCards.push(card);
+  }
 
 /*deck.click(function() {
   Won();
@@ -158,28 +156,52 @@ function myCode() {
   deck.on("click", ".card", function(evt) {
    let target = $(evt.target);
    let targetId = target.attr("id");
-   cardShow(target);
-   addOpened(targetId);
-    let numOfOpen = openCards.length;
-    if (numOfOpen === 2) {
-      moves += 1;
-      countMove(moves);
-     let firstIcon = openCards[0].innerHTML;
-     let secondIcon = openCards[1].innerHTML;
-     if (firstIcon !== secondIcon) {
-       delay(openCards[0], openCards[1]);
-       failedMoves += 1;
-       rating(failedMoves);
+   let targetedEl = document.getElementById(targetId);
+   for (const card of matchedCards) {
+     let cardId = card.getAttribute("id");
+     if (cardId === targetId) {
+       return false;
      }
-     else {
-       matches += 1;
-       // addMatched(openCards[0], openCards[1]);
-       if (matches === 8) {
-         Won();
-       }
-     }
-     openCards = [];
    }
+   for (const card of openCards) {
+     let cardId = card.getAttribute("id");
+     if (cardId === targetId) {
+       return false;
+     }
+   }
+
+
+   // let targetOpen = targetedEl.classList.contains("active");
+   // if (!targetOpen) {
+     cardShow(targetedEl);
+     addOpened(targetedEl);
+      let numOfOpen = openCards.length;
+      if (numOfOpen === 2) {
+        moves += 1;
+        countMove(moves);
+       let firstIcon = openCards[0].innerHTML;
+       let secondIcon = openCards[1].innerHTML;
+       if (firstIcon !== secondIcon) {
+         delay(openCards[0], openCards[1]);
+         failedMoves += 1;
+         rating(failedMoves);
+       }
+       else {
+         addMatched(openCards[0]);
+         addMatched(openCards[1]);
+         matches += 1;
+         // addMatched(openCards[0], openCards[1]);
+         if (matches === 8) {
+           Won();
+         }
+       }
+       openCards = [];
+     }
+
+   // else {
+     // cardHide(targetedEl);
+     // openCards = [];
+     // return false;
  });
 
 function countMove(numOfMoves) {
