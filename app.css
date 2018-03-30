@@ -23,7 +23,7 @@ body {
     font-family: 'Coda', cursive;
     color: white;
 }
-
+/* Styles for the modal */
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -40,13 +40,13 @@ body {
 
 /* Modal Content/Box */
 .modal-content {
-  text-align: center;
+    text-align: center;
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 3px solid #888;
     border-radius: 10px;
-    width: 50%; /* Could be more or less, depending on screen size */
+    width: 50%;
     color: black;
 }
 
@@ -58,6 +58,7 @@ body {
     font-weight: bold;
 }
 
+/* Some effects for the close button */
 .close:hover,
 .close:focus {
     color: black;
@@ -66,9 +67,9 @@ body {
 }
 
 .modal-content #replay {
-  background-color: silver;
-  height: 25%;
-  width: 35%;
+    background-color: silver;
+    height: 25%;
+    width: 35%;
 }
 
 .container {
@@ -131,9 +132,14 @@ h1 {
 }
 
 .deck .card.match {
+  /* a class for matched cards */
     cursor: default;
     background: #02ccba;
-    font-size: 20px;
+}
+
+.deck .card.reject {
+    /* a class for a wrong guess */
+   background: rgb(176, 48, 48);
 }
 
 /*
@@ -146,6 +152,7 @@ h1 {
     margin-bottom: 10px;
 }
 
+/* Make sure the stars are placed properly */
 .score-panel #stars,
 #stars-modal {
     margin: 0;
@@ -154,12 +161,18 @@ h1 {
     margin: 0 5px 0 0;
 }
 
+/* Clear of typical list projection */
 .score-panel #stars li,
 #stars-modal li {
     list-style: none;
     display: inline-block;
 }
 
+.fa-star {
+  color: gold;
+}
+
+/* Some styles for the restart button */
 .restart {
     color: black;
     background-color: silver;
@@ -173,16 +186,15 @@ h1 {
 }
 
 .restart:hover {
-background-color: rgb(199, 201, 236);
+  background-color: rgb(199, 201, 236);
 }
 
 .fa-repeat {
   font-size: 1.3em;
 }
 
-.fa-star {
-  color: gold;
-}
+/* Added some breakpoints to ensure game looks good on different devices
+and to limit scrolling as possible for greater experience */
 @media screen and (max-width: 400px) {
   .score-panel {
     text-align: center;
@@ -240,6 +252,7 @@ background-color: rgb(199, 201, 236);
    }
 }
 
+/* on wide and short screen devixes (or on screen rotations) just make height scrollable and keep the width fit */
 @media screen and (max-height:500px) {
   .deck {
     height: 120vh;
