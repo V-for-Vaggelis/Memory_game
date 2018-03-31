@@ -12,5 +12,5 @@ The website was built using the following dependencies:
 <li>The "Coda" font-family from google-fonts <a href="https://fonts.googleapis.com/css?family=Coda">https://fonts.googleapis.com/css?family=Coda</a></li>
 </ul>
 
-### Compatibility
+###Compatibility
 This website is responsive and will look good on most devices. It was tested on Google Chrome, Firefox and Internet Explorer and while it works on the first two I must give a **warning that it will not work for internet explorer**. Please report any other unknown issues.
