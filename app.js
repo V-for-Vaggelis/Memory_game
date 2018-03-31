@@ -157,6 +157,10 @@ function myCode() {
   // The event listener for clicking a card, this is where all the magic happens
   deck.on("click", ".card", function(evt) {
     let target = $(evt.target);
+    let targetIsCard = target.hasClass("card");
+    if (!targetIsCard) {
+      return false;
+    }
     let targetId = target.attr("id");
     let targetedEl = document.getElementById(targetId);
     // I wrote two loops to prevent problems when user clicks an open card
