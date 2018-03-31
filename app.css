@@ -1,171 +1,171 @@
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* This refers to all the elements of the document */
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 html,
 body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background: url('nightsky.png') no-repeat center center fixed;
-    background-size: cover;
-    font-family: 'Coda', cursive;
-    color: white;
+  background: url('nightsky.png') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Coda', cursive;
+  color: white;
 }
 /* Styles for the modal */
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
 .modal-content {
-    text-align: center;
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 3px solid #888;
-    border-radius: 10px;
-    width: 50%;
-    color: black;
+  text-align: center;
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 3px solid #888;
+  border-radius: 10px;
+  width: 50%;
+  color: black;
 }
 
 /* The Close Button */
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 /* Some effects for the close button */
 .close:hover,
 .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .modal-content #replay {
-    background-color: silver;
-    height: 25%;
-    width: 35%;
+  background-color: silver;
+  height: 25%;
+  width: 35%;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 h1 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
 }
 
 /*
- * Styles for the deck of cards
- */
+* Styles for the deck of cards
+*/
 
 .deck {
-    width: 94%;
-    height: 80vh;
-    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-    padding: 2%;
-    border-radius: 10px;
-    box-shadow: 8px 12px 18px 0 rgba(46, 61, 73, 0.5);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 0 3em;
+  width: 94%;
+  height: 80vh;
+  background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+  padding: 2%;
+  border-radius: 10px;
+  box-shadow: 8px 12px 18px 0 rgba(46, 61, 73, 0.5);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 3em;
 }
 
 .deck .card {
-    height: 21%;
-    width: 21%;
-    margin: 1%;
-    background: #2e3d49;
-    font-size: 0;
-    /* This will ensure that the icon doesn't initially display */
-    color: #ffffff;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 2.5px 1px 10px 0 rgba(46, 61, 73, 0.5);
+  height: 21%;
+  width: 21%;
+  margin: 1%;
+  background: #2e3d49;
+  font-size: 0;
+  /* This will ensure that the icon doesn't initially display */
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2.5px 1px 10px 0 rgba(46, 61, 73, 0.5);
 }
 
 .deck .card.open {
   /* This class will create an effect of the card being flipped */
-    transform: rotateY(180deg);
-    transition-duration: 0.8s;
-    background: #02b3e4;
-    cursor: default;
+  transform: rotateY(180deg);
+  transition-duration: 0.8s;
+  background: #02b3e4;
+  cursor: default;
 }
 
 .deck .card.show {
-      /* This class will project the icon */
-    font-size: 20px;
+  /* This class will project the icon */
+  font-size: 20px;
 }
 
 .deck .card.match {
   /* a class for matched cards */
-    cursor: default;
-    background: #02ccba;
+  cursor: default;
+  background: #02ccba;
 }
 
 .deck .card.reject {
-    /* a class for a wrong guess */
-   background: rgb(176, 48, 48);
+  /* a class for a wrong guess */
+  background: rgb(176, 48, 48);
 }
 
 /*
- * Styles for the Score Panel
- */
+* Styles for the Score Panel
+*/
 
 .score-panel {
-    text-align: left;
-    width: 345px;
-    margin-bottom: 10px;
+  text-align: left;
+  width: 345px;
+  margin-bottom: 10px;
 }
 
 /* Make sure the stars are placed properly */
 .score-panel #stars,
 #stars-modal {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    margin: 0 5px 0 0;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  margin: 0 5px 0 0;
 }
 
 /* Clear of typical list projection */
 .score-panel #stars li,
 #stars-modal li {
-    list-style: none;
-    display: inline-block;
+  list-style: none;
+  display: inline-block;
 }
 
 .fa-star {
@@ -174,19 +174,19 @@ h1 {
 
 /* Some styles for the restart button */
 .restart {
-    color: black;
-    background-color: silver;
-    border: 1px solid black;
-    border-radius: 5px;
-    min-height: 24px;
-    min-width: 24px;
-    float: right;
-    padding: 5px 5px 2px 5px;
-    cursor: pointer;
+  color: rgb(156, 34, 34);
+  background-color: silver;
+  border-radius: 50%;
+  min-height: 24px;
+  min-width: 24px;
+  float: right;
+  padding: 6px 6px 3px 6px;
+  cursor: pointer;
 }
 
 .restart:hover {
   background-color: rgb(199, 201, 236);
+  color: red;
 }
 
 .fa-repeat {
@@ -214,42 +214,42 @@ and to limit scrolling as possible for greater experience */
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
   }
   .deck .card.show {
-      font-size: 30px;
+    font-size: 30px;
   }
-   .deck .card.match {
-     font-size: 30px;
-   }
-   h1 {
-     font-size: 2.2em;
-   }
-   #moves {
-     font-size: 1.3em;
-   }
-   .fa-star {
-     font-size: 1.3em;
-   }
+  .deck .card.match {
+    font-size: 30px;
+  }
+  h1 {
+    font-size: 2.2em;
+  }
+  #moves {
+    font-size: 1.3em;
+  }
+  .fa-star {
+    font-size: 1.3em;
+  }
 }
 
 @media screen and (min-width:900px) {
   .deck {
-      width: 846px;
-      box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
-    }
+    width: 846px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+  }
   h1 {
     font-size: 2.8em;
   }
   .deck .card.show {
-      font-size: 35px;
+    font-size: 35px;
   }
-   .deck .card.match {
-     font-size: 35px;
-   }
-   .modal-content #replay {
-     width: 20%;
-   }
-   .modal-content {
-     width: 40%;
-   }
+  .deck .card.match {
+    font-size: 35px;
+  }
+  .modal-content #replay {
+    width: 20%;
+  }
+  .modal-content {
+    width: 40%;
+  }
 }
 
 /* on wide and short screen devixes (or on screen rotations) just make height scrollable and keep the width fit */
