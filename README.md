@@ -1,7 +1,7 @@
 # Memory game
 The memory game is a website-game developed for fun and educational purposes. The game requires focus and good memory!
 
-## How to around
+## How to run
 
 The game should be available at <a href="https://v-for-vaggelis.github.io/Memory_game/">this live page</a>
 
