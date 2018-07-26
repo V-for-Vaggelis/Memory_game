@@ -1,6 +1,10 @@
 # Memory game
 The memory game is a website-game developed for fun and educational purposes. The game requires focus and good memory!
 
+## How to around
+
+The game should be available at <a href="https://v-for-vaggelis.github.io/Memory_game/">this live page</a>
+
 ### How to Play
 Click at two card to make a move, wrong guesses hide the cards while right guesses keep them opened. Your rating depends on the number of mistakes. The perfect is 3 stars for less than 9 mistakes, two stars mean 9-12 mistakes while more than 12 mistakes give you one star. The time is just for the user and has no impact on the rating. There is no losing in this game so have fun!
 
