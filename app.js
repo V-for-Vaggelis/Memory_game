@@ -1,22 +1,27 @@
 "use strict";
 function myCode() {
-  const deck = $('.deck');
-  /*
-  * Create a list that holds all of my cards
-  */
+
+  const deck = document.getElementsByClassName('deck')[0];
+
+  // Create a list that holds all of my cards
+
   let cards = document.getElementsByClassName("card");
   let cardsArray = [...cards];
+
   let moves, failedMoves, matches, status, time = 0;
-  let stars = $("#stars");
+
+  let stars = document.getElementById('stars');
   let starCount = 3;
+
   let modal = document.getElementById('myModal');
   // Get the <span> element that closes the modal
   let closeModal = document.getElementsByClassName("close")[0];
-  // One array to save all the matches card and one to help me make the comparison
+
+  // One array to save all the matched cards and one to help me make the comparison
   let matchedCards = [];
   let  openCards = [];
 
-  // I'll create a timer that will lively show on the webpage as showed in this tutorial: https://www.youtube.com/watch?v=iSLWtGAw1Ic
+  // Create a timer that will lively show on the webpage as showed in this tutorial: https://www.youtube.com/watch?v=iSLWtGAw1Ic
   function startTimer() {
     status = 1;
     timer();
@@ -53,39 +58,50 @@ function myCode() {
     }
   }
 
-  // I start the stopwatch on pageload
+  // Start the stopwatch on pageload
   document.addEventListener("DOMContentLoaded", function() {
     startTimer();
   });
 
   // A function that restarts the game without page reload, it also shuffles the cards
   function restartGame() {
+
     let MoveShow = document.getElementById("moves");
     MoveShow.textContent = "0 Moves";
+
     moves = 0;
     failedMoves = 0;
     matches = 0;
     starCount = 3;
     openCards = [];
     matchedCards =[];
-    // I'll re-initialize the rating to be 3 stars
-    stars.children().remove();
-    stars.append("<li><i class=\"fa fa-star\"></i></li>\n<li><i class=\"fa fa-star\"></i></li>\n<li><i class=\"fa fa-star\"></i></li>");
+
+    // Re-initialize the rating to be at 3 stars
+    while (stars.firstChild) {
+      stars.removeChild(stars.firstChild);
+    }
+    let str = "<li><i class=\"fa fa-star\"></i></li>\n<li><i class=\"fa fa-star\"></i></li>\n<li><i class=\"fa fa-star\"></i></li>";
+    stars.insertAdjacentHTML( 'beforeend', str );
+
     // Shuffle the cards and replace them on the deck
     shuffle(cardsArray);
-    deck.children().remove();
+    while (deck.firstChild) {
+      deck.removeChild(deck.firstChild);
+    }
     let i = 0;
     for (let card of cardsArray) {
       i += 1;
       card.classList.remove("open");
       card.classList.remove("show");
       card.classList.remove("match");
-      // I add an id for each card it will help me later on
+      // Add an id for each card it will help later on
       card.setAttribute("id", "card" + i);
-      deck.append(card);
+      deck.appendChild(card);
     }
+
     restartTimer();
     timer();
+
   }
 
   // Also call this function on page load so that the shuffle happens anyway
@@ -106,11 +122,10 @@ function myCode() {
   }
 
   // When the restart button is clicked call the restartGame function
-  const restart = $('.restart');
-  restart.click(function() {
+  const restart = document.getElementsByClassName('restart')[0];
+  restart.addEventListener("click", function(){
     restartGame();
   });
-
 
   function cardShow(clickedCard) {
     clickedCard.classList.add("open");
@@ -123,7 +138,7 @@ function myCode() {
     card.classList.remove("reject");
   }
 
-  // This function will create an effect for wron guesses
+  // This function will create an effect for wrong guesses
   function redReject(card1, card2) {
     setTimeout( function() {
       card1.classList.add("reject");
@@ -139,7 +154,7 @@ function myCode() {
     }, 1200);
   }
 
-  // A function to push a clicke dcard for comparison
+  // A function to push a clicked card for comparison
   function addOpened(clickedCard) {
     openCards.push(clickedCard);
   }
@@ -149,21 +164,25 @@ function myCode() {
     matchedCards.push(card);
   }
 
-  // lear right click menu inside the deck
-  deck.contextmenu(function(evt) {
-    evt.preventDefault();
+  // prevent right click menu inside the deck
+  deck.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
   });
 
   // The event listener for clicking a card, this is where all the magic happens
-  deck.on("click", ".card", function(evt) {
-    let target = $(evt.target);
-    let targetIsCard = target.hasClass("card");
+  deck.addEventListener("click", function(evt) {
+
+    let target = evt.target;
+
+    let targetIsCard = target.classList.contains("card");
     if (!targetIsCard) {
       return false;
     }
-    let targetId = target.attr("id");
+
+    let targetId = target.getAttribute("id");
     let targetedEl = document.getElementById(targetId);
-    // I wrote two loops to prevent problems when user clicks an open card
+
+    // Two loops to prevent problems when user clicks an open card
     for (const card of matchedCards) {
       let cardId = card.getAttribute("id");
       if (cardId === targetId) {
@@ -176,10 +195,11 @@ function myCode() {
         return false;
       }
     }
-    // So if a card is opned or matched kill the handler, even though it works there might be some errors in dev tools
+    // So if a card is opened or matched kill the handler, even though it works there might be some errors in dev tools
 
     cardShow(targetedEl);
     addOpened(targetedEl);
+
     let numOfOpen = openCards.length;
     if (numOfOpen === 2) {
       moves += 1;
@@ -219,7 +239,7 @@ function myCode() {
   // A function that lowers the rating after some wrong guesses
   function rating(numOfMistakes) {
     if ((numOfMistakes === 9)||(numOfMistakes === 12)) {
-      stars.children().last().remove();
+      stars.removeChild(stars.lastChild);
       starCount -= 1;
     }
   }
@@ -238,8 +258,9 @@ function myCode() {
     // I can break it to min sec and ms later
     modal.style.display = "block";
 
-    let replay = $("#replay");
-    replay.click(function() {
+    let replay = document.getElementById('replay');
+
+    replay.addEventListener('click', function() {
       modal.style.display = "none";
       restartGame();
     });
@@ -255,6 +276,8 @@ function myCode() {
         modal.style.display = "none";
       }
     }
+
   }
 }
-$(myCode());
+
+myCode();
